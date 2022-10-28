@@ -1,6 +1,6 @@
-class Arbol{
+class ObtaculosAlt{
     
-    constructor(canvasW, playerY,playerH,ctx) {
+    constructor(canvasW, playerY, playerH,ctx) {
 
         this.ctx = ctx;
         
@@ -8,17 +8,17 @@ class Arbol{
         this.h = 80;
 
         this.img = new Image();
-        this.img.src = "img/cajaa.png"
+        this.img.src = "img/Zombie1.gif"
 
         this.x = canvasW;
     
-        this.y = playerY + (playerH - this.h) - 10;
+        this.y = this.canvasH * 0.2;
 
         this.dx=15;     
     }
      
     draw(){
-        
+        console.log("Pinta obtaculosAlt")
         this.ctx.drawImage(
            
             this.img,

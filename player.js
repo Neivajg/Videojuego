@@ -50,7 +50,7 @@ class Player {
                 event.keyCode === this.keys.SPACE
             ) {
                 this.shoot()
-                console.log("Disparo")
+            
             }
         }.bind(this)
     }
@@ -73,7 +73,7 @@ class Player {
     this.animateImg(frameCounter)
 
         // Clear bullets
-        this.bullets = this.bullets.filter((bullet) => bullet.x < this.canvasW )
+        this.bullets = this.bullets.filter((bullet) => bullet.x - bullet.r < this.canvasW )
         
         this.bullets.forEach((bullet) => {
             bullet.draw();
