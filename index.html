@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Img/zombieee.webp" type="image/webp">
+
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        body {  /*añadimos grid y justify para centrar el video juego en el centro*/
+            display: grid;
+            justify-content: center;
+            background-color: rgba(60, 55, 55, 0.927);
+        }
+
+        #borde{
+         border: 5px solid black ;
+        }
+
+    </style>
+    <script src="background.js"></script>
+    <script src="scoreboard.js"></script>
+    <script src="bullet.js"></script>
+    <script src="player.js"></script>
+    <script src="enemigos.js"></script>
+    <script src="arbolObtacle.js"></script>
+    <script src="game.js"></script>
+    <script src="index.js"></script>
+    <title>Zombies</title>
+<body>
+    
+    <div id="borde">
+    <canvas id="canvas" width="1200" height="700"></canvas>
+    </div>
+</body>
+</html>
