@@ -16,7 +16,7 @@ class Player {
         this.y = this.y0;
 
         this.img = new Image();
-        this.img.src = "img/imgg.png"
+        this.img.src = "img/player.png"
         
         this.img.frames = 5; // franjas visuales de la img
         this.img.frameIndex = 0;// ¿Que hace esto?

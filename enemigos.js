@@ -10,7 +10,7 @@ class Enemigos {
         this.y = this.canvasH * 0.78;
 
         this.img = new Image();
-        this.img.src = "img/Attack.png"
+        this.img.src = "img/enemy.png"
         
         this.img.frames = 8; // franjas visuales de la img
         this.img.frameIndex = 0;

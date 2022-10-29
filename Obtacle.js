@@ -8,7 +8,7 @@ class Octacle{
         this.h = 80;
 
         this.img = new Image();
-        this.img.src = "img/cajaa.png"
+        this.img.src = "img/box.png"
 
         this.x = canvasW;
     

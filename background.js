@@ -5,7 +5,7 @@ class Background {
         this.h = h;
 
         this.img = new Image();
-        this.img.src = "img/selecionada.jpg"
+        this.img.src = "img/background.jpg"
 
         this.x = 0;
         this.y = 0;
