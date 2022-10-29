@@ -30,7 +30,6 @@ const Game = {
 
         this.reset();
         
-        
         // Loop del juego
 
         this.interval = setInterval(() => {
@@ -42,47 +41,29 @@ const Game = {
 
             if(this.frameCounter > 1000) {
                 this.frameCounter = 0;
-            }
+               }
 
             if(this.frameCounter % 80 === 0 && Math.floor(Math.random()*2) == 1) { 
-                 this.generateArbol()
-
+                 this.generateOctacle()
             } 
+
             if(this.frameCounter % 100 === 0 && Math.floor(Math.random()*2) == 1 ) { 
                 this.generateEnemigos()
-
-           } 
-
-        //     if(this.frameCounter % 30 === 0 ) { 
-        //         this.generateOctalulosALt()
-
-        //    } 
-           
-            
+            } 
 
             this.moveAll();
             this.drawAll();
 
-            this.clearArboles()
+            this.clearOctacle()
             this.clearEnemigos()
 
-           
             this.isShoot()
 
-            if( this.isColisionWithGueisa()) {
-                console.log("aaaaaaaaaaaaaaaaaaa")
-                 this.gameOver();
-            }
-
-            if(this.isColisionWithBox()) {
+            if(this.isColisionWithBox()|| this.isColisionWithGueisa()) {
                 this.gameOver();
            }
 
-
-            
-
         }, 1000 / this.fps)
-
     },
 
     reset: function() {
@@ -90,8 +71,7 @@ const Game = {
         this.player = new Player(this.canvas.width, this.canvas.height, this.ctx, this.keys)
         this.scoreBoard = ScoreBoard
         this.score = 0;
-        this.arboles = []; // Coleccion de Cajas
-        // this.octaculos=[]
+        this.octacles = []; // Coleccion de Cajas
         this.enemigos= []; // Coleccion de Enemigos
         this.scoreBoard = ScoreBoard;
         this.frameCounter = 0
@@ -100,8 +80,9 @@ const Game = {
     moveAll: function() {
         this.background.move()
         this.player.move()
-        this.arboles.forEach(Arbol=>{
-            Arbol.move()
+
+        this.octacles.forEach(octacle=>{
+            octacle.move()
         })
         this.enemigos.forEach(Enemigos=>{
             Enemigos.move()
@@ -112,11 +93,10 @@ const Game = {
     drawAll: function() {
     
         this.background.draw()
-
         this.player.draw(this.frameCounter)
 
-        this.arboles.forEach(Arbol=>{
-            Arbol.draw()
+        this.octacles.forEach(octacle=>{
+            octacle.draw()
         })
        
        this.enemigos.forEach(Enemigos=>{
@@ -131,9 +111,9 @@ const Game = {
     },
 
     //CREACIÓN CAJAS Y ENEMIGOS
-    generateArbol: function() {
-            this.arboles.push(
-                new Arbol(this.canvas.width, this.player.y0, this.player.h, this.ctx)
+    generateOctacle: function() {
+            this.octacles.push(
+                new Octacle(this.canvas.width, this.player.y0, this.player.h, this.ctx)
             );
         },
   
@@ -143,8 +123,8 @@ const Game = {
             )
         },
 
-    clearArboles: function() {
-            this.arboles = this.arboles.filter((Arbol) => Arbol.x + Arbol.w >= 0)
+    clearOctacle: function() {
+            this.octacles = this.octacles.filter((Octacle) => Octacle.x + Octacle.w >= 0)
         },
     
     clearEnemigos: function() {
@@ -153,22 +133,17 @@ const Game = {
 
     // COLISION PLAYER - CAJA
     isColisionWithBox: function() {
-            return this.arboles.some(Arbol => {
+            return this.octacles.some(Octacle => {
                 return (
-                    this.player.x + this.player.w >= Arbol.x + 20 &&
-                    this.player.x < Arbol.x + Arbol.w &&
-                    this.player.y + (this.player.h - 20) >= Arbol.y 
+                    this.player.x + this.player.w >= Octacle.x + 20 &&
+                    this.player.x < Octacle.x + Octacle.w &&
+                    this.player.y + (this.player.h - 20) >= Octacle.y 
                     )
             })
         },
 
-
-
         // COLISION PLAYER - GUEISA
-
-        // - 1. La llamada al metodo de la colision en el loop
-        // - 2. El metodo de la colision
-
+        // - 1. La llamada al metodo de la colision en el loop// 2. El metodo de la colision.
         isColisionWithGueisa: function () {
             return this.enemigos.some(Enemigo => {
              return (
@@ -179,9 +154,6 @@ const Game = {
              })
     },
 
-
-
-       
         // COLISION BULLET - GUEISA
         isShoot: function() {
             return this.enemigos.some(Enemigo => {
@@ -200,7 +172,6 @@ const Game = {
 
                             return result
                     })
-
             })
         },
 

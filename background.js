@@ -14,7 +14,7 @@ class Background {
         this.dx = 15;//añadimos el desplazamineto (Velocidad)
     }
     
-    draw() {                    //Se añaden dos contectos porque es como si hubiera dos imagenes que van corriendo 
+    draw() { //Se añaden dos contectos porque es como si hubiera dos imagenes que van corriendo 
         this.ctx.drawImage(
             this.img,
             this.x,

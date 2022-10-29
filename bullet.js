@@ -29,7 +29,6 @@ class Bullet {
     move() {
         // Avance pelota
         this.x  += this.vx;
-
         // Caida pelota 
         // this.vy += this.gravity;
         // this.y += this.vy;
